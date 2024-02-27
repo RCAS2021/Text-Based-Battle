@@ -19,6 +19,7 @@ class Character:
         if isinstance(target, Hero):
             if target.is_blocking is True:
                 total_damage //= 2
+                target.is_blocking = False
         target.health -= total_damage
         target.health = max(target.health, 0)
         target.health_bar.update()
