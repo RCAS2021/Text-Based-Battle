@@ -27,9 +27,6 @@ while True:
 
     swapping = input("\nSwap weapons? Y/N\n")
     if swapping.upper() == "Y":
-        old_weapon = hero.weapon
-        hero.drop(hero.weapon)
-        hero.equip(hero.secondary_weapon)
-        hero.secondary_weapon = old_weapon
+        hero.swap(item=hero.weapon)
     # Waiting input to continue
     input("\nContinue...")

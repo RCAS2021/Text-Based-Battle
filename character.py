@@ -26,14 +26,21 @@ class Hero(Character):
         self.secondary_weapon = secondary_weapon
 
     def equip(self, item) -> None:
-        if type(item) == Weapon:
+        if isinstance(item, Weapon):
             self.weapon = item
         print(f"{self.name} equipped {self.weapon.name}")
 
     def drop(self, item) -> None:
-        if type(item) == Weapon:
+        if isinstance(item, Weapon):
             self.weapon = item
         print(f"{self.name} dropped {self.weapon.name}")
+
+    def swap(self, item) -> None:
+        if isinstance(item, Weapon):
+            old_weapon = self.weapon
+            self.drop(self.weapon)
+            self.equip(self.secondary_weapon)
+            self.secondary_weapon = old_weapon
 
 
 class Enemy(Character):
