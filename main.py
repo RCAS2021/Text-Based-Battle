@@ -1,10 +1,10 @@
 # Importing the created class
-from character import Character
+from character import Hero, Enemy
 from weapon import *
 
 # Instanciating the class, getting two objects
-hero = Character(name="Hero", health=100, strength=5, weapon=iron_sword)
-enemy = Character(name="enemy", health=25, strength=3, weapon=fists)
+hero = Hero(name="Hero", health=100, strength=5, weapon=iron_sword)
+enemy = Enemy(name="enemy", health=25, strength=3, weapon=fists)
 
 while True:
     # Calling attack methods
