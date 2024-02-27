@@ -6,15 +6,22 @@ from weapon import *
 hero = Hero(name="Hero", health=100, strength=5, weapon=iron_sword)
 enemy = Enemy(name="enemy", health=25, strength=3, weapon=fists)
 
+def print_health(character):
+    print(f"{character.name} Health: {character.health}")
+
 while True:
-    print(f"{hero.name} Health: {hero.health}")
-    print(f"{enemy.name} Health: {enemy.health}")
+    # Printing current health
+    print_health(hero)
+    print_health(enemy)
+    print()
     # Calling attack methods
     hero.attack(enemy)
     enemy.attack(hero)
+    print()
+    print("--- End Turn ---")
 
-    # Printing current health
-    print(f"{hero.name} Health: {hero.health}")
-    print(f"{enemy.name} Health: {enemy.health}")
+    print_health(hero)
+    print_health(enemy)
+
     # Waiting input to continue
     input("\nContinue...")
