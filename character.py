@@ -1,4 +1,4 @@
-from weapon import Weapon
+from weapon import *
 
 class Character:
     # Variables created before the __init__ method are class-level variables, shared across all instances of the class
@@ -21,6 +21,19 @@ class Character:
 class Hero(Character):
     def __init__(self, name:str, health: int, strength: float, weapon: Weapon) -> None:
         super().__init__(name=name, health=health, strength=strength, weapon=weapon)
+
+        self.default_weapon = self.weapon
+
+    def equip(self, item) -> None:
+        if type(item) == Weapon:
+            self.weapon = item
+        print(f"{self.name} equipped {self.weapon.name}")
+
+    def drop(self, item) -> None:
+        if type(item) == Weapon:
+            self.weapon = self.default_weapon
+        print(f"{self.name} dropped {self.weapon.name}")
+
 
 class Enemy(Character):
     def __init__(self, name:str, health: int, strength: float, weapon: Weapon) -> None:
