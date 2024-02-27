@@ -1,9 +1,10 @@
 # Importing the created class
 from character import Character
+from weapon import *
 
 # Instanciating the class, getting two objects
-hero = Character(name="Hero", health=100, damage=5)
-enemy = Character(name="enemy", health=25, damage=3)
+hero = Character(name="Hero", health=100, strength=5, weapon=fists)
+enemy = Character(name="enemy", health=25, strength=3, weapon=fists)
 
 while True:
     # Calling attack methods
@@ -11,8 +12,7 @@ while True:
     enemy.attack(hero)
 
     # Printing current health
-    print(f"Health of {hero.name}: {hero.health}")
-    print(f"Health of {enemy.name}: {enemy.health}")
-
+    print(f"{hero.name} Health: {hero.health}")
+    print(f"{enemy.name} Health: {enemy.health}")
     # Waiting input to continue
-    input("Continue...")
+    input("\nContinue...")
