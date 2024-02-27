@@ -3,7 +3,7 @@ from character import Hero, Enemy
 from weapon import *
 
 # Instanciating the class, getting two objects
-hero = Hero(name="Hero", health=100, strength=5, weapon=iron_sword)
+hero = Hero(name="Hero", health=100, strength=5, weapon=iron_sword, secondary_weapon=short_bow)
 enemy = Enemy(name="enemy", health=25, strength=3, weapon=fists)
 
 def print_health(character):
@@ -25,5 +25,11 @@ while True:
     print_health(hero)
     print_health(enemy)
 
+    swapping = input("\nSwap weapons? Y/N\n")
+    if swapping.upper() == "Y":
+        old_weapon = hero.weapon
+        hero.drop(hero.weapon)
+        hero.equip(hero.secondary_weapon)
+        hero.secondary_weapon = old_weapon
     # Waiting input to continue
     input("\nContinue...")

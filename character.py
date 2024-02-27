@@ -19,10 +19,11 @@ class Character:
         print(f"{self.name} dealt {total_damage} damage to {target.name} with {self.weapon.name}")
 
 class Hero(Character):
-    def __init__(self, name:str, health: int, strength: float, weapon: Weapon) -> None:
+    def __init__(self, name:str, health: int, strength: float, weapon: Weapon, secondary_weapon: Weapon) -> None:
         super().__init__(name=name, health=health, strength=strength, weapon=weapon)
 
         self.default_weapon = self.weapon
+        self.secondary_weapon = secondary_weapon
 
     def equip(self, item) -> None:
         if type(item) == Weapon:
@@ -31,7 +32,7 @@ class Hero(Character):
 
     def drop(self, item) -> None:
         if type(item) == Weapon:
-            self.weapon = self.default_weapon
+            self.weapon = item
         print(f"{self.name} dropped {self.weapon.name}")
 
 
