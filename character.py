@@ -16,7 +16,7 @@ class Character:
         total_damage = self.strength + self.weapon.damage
         target.health -= total_damage
         target.health = max(target.health, 0)
-        print(f"{self.name} dealt {total_damage} damage!")
+        print(f"{self.name} dealt {total_damage} damage to {target.name} with {self.weapon.name}")
 
 class Hero(Character):
     def __init__(self, name:str, health: int, strength: float, weapon: Weapon) -> None:
