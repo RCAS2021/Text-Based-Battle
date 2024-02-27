@@ -1,0 +1,2 @@
+add difference melee x ranged
+implement throwable items
