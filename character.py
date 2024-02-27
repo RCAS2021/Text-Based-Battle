@@ -16,8 +16,9 @@ class Character:
     def attack(self, target) -> None:
 
         total_damage = self.strength + self.weapon.damage
-        if target.is_blocking is True:
-            total_damage //= 2
+        if isinstance(target, Hero):
+            if target.is_blocking is True:
+                total_damage //= 2
         target.health -= total_damage
         target.health = max(target.health, 0)
         target.health_bar.update()
