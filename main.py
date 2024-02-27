@@ -9,17 +9,19 @@ enemy = Enemy(name="enemy", health=25, strength=3, weapon=fists)
 def print_health(character):
     print(f"{character.name} Health: {character.health}")
 
+# Printing current health at battle start
+print_health(hero)
+print_health(enemy)
+print()
+
 while True:
-    # Printing current health
-    print_health(hero)
-    print_health(enemy)
-    print()
     # Calling attack methods
     hero.attack(enemy)
     enemy.attack(hero)
     print()
     print("--- End Turn ---")
 
+    # Printing current health
     print_health(hero)
     print_health(enemy)
 
