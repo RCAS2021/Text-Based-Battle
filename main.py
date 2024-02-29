@@ -30,9 +30,14 @@ def run() -> None:
             hero.block()
             enemy.attack(hero)
         elif action.upper() == "H":
-            enemy.attack(hero)
-            hero.small_heal()
-            print(f"You have {hero.consumables[0].quantity} {hero.consumables[0].name}")
+            # Check if health potion quantity > 0
+            if hero.consumables[0].quantity > 0:
+                HealthPotion.restore(hero.consumables[0])
+                hero.consumables[0].quantity -= 1
+                enemy.attack(hero)
+                print(f"You have {hero.consumables[0].quantity} {hero.consumables[0].name} remaining")
+            else:
+                print(f"No {hero.consumables[0].name}")
         elif action.upper() == "S":
             hero.swap(item=hero.weapon)
             enemy.attack(hero)
