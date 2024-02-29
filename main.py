@@ -74,16 +74,16 @@ def run() -> None:
         enemy.health_bar.draw()
         if enemy.health <= 0:
             print("Victory!")
-            input("Press any button to start again")
+            input("Press enter to start again")
             os.system('cls')
             run()
         elif hero.health <= 0:
             print("Defeat!")
-            input("Press any button to start again")
+            input("Press enter to start again")
             os.system('cls')
             run()
         else:
-            input("Press any button to continue")
+            input("Press enter to continue")
 
         os.system('cls')
 
