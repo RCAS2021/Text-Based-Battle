@@ -1,3 +1,1 @@
-implement consumables inventory
-    -implement consumables quantity check on hero
 implement throwable items
