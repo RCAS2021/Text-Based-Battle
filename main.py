@@ -2,17 +2,19 @@
 import os
 from character import Hero, Enemy
 from weapon import *
+from consumable import *
 
 def run() -> None:
     # Instanciating the class, getting two objects
     hero = Hero(name="Hero", health=100, strength=5, weapon=iron_sword, secondary_weapon=short_bow)
     enemy = Enemy(name="Enemy", health=25, strength=3, weapon=short_bow)
 
+
     while True:
         hero.health_bar.draw()
         enemy.health_bar.draw()
         # Input action
-        action = input("\nSelect your action: \nAttack - A\nBlock - B\nSwap Weapon- S\n")
+        action = input("\nSelect your action: \nAttack - A\nBlock - B\nSwap Weapon - S\nHeal - H\n")
         os.system('cls')
         if action.upper() == "A":
             if (hero.weapon.weapon_type == "Melee" and enemy.weapon.weapon_type == "Ranged"):
@@ -26,6 +28,9 @@ def run() -> None:
         elif action.upper() == "B":
             hero.block()
             enemy.attack(hero)
+        elif action.upper() == "H":
+            enemy.attack(hero)
+            hero.small_heal()
         elif action.upper() == "S":
             hero.swap(item=hero.weapon)
             enemy.attack(hero)

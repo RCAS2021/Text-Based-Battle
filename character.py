@@ -1,4 +1,5 @@
 from weapon import *
+from consumable import *
 from health_bar import HealthBar
 
 class Character:
@@ -33,6 +34,11 @@ class Hero(Character):
         self.secondary_weapon = secondary_weapon
         self.health_bar = HealthBar(self, color="green")
         self.is_blocking = False
+        self.consumables = [HealthPotion(self, name="small_health_potion", consumable_type="restoring", effect="restore 20 health", value=5, power=20)]
+
+    def small_heal(self):
+        HealthPotion.restore(self.consumables[0])
+
 
     def block(self):
         print(f"{self.name} blocked the attack, halving damage taken")
