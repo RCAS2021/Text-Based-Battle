@@ -11,7 +11,10 @@ def run() -> None:
 
     # Adding 1 potion for testing
     hero.consumables[0].quantity += 1
+    # Adding 1 bomb for testing
     hero.consumables[1].quantity += 1
+    # Adding 1 poison bomb for testing
+    hero.consumables[2].quantity += 1
     while True:
         hero.health_bar.draw()
         enemy.health_bar.draw()
@@ -34,7 +37,7 @@ def run() -> None:
             hero.swap(item=hero.weapon)
             enemy.attack(hero)
         elif action.upper() == "I":
-            action = input("\nSelect your item: Potion - P\nBomb - B\n")
+            action = input("\nSelect your item: Potion - P\nBomb - B\nPoison Bomb - PB\n")
             os.system('cls')
             if action.upper() == "P":
                 # Check if health potion quantity > 0
@@ -52,11 +55,20 @@ def run() -> None:
                     print(f"You have {hero.consumables[1].quantity} {hero.consumables[1].name} remaining")
                 else:
                     print(f"No {hero.consumables[1].name} in inventory")
+            elif action.upper() == "PB":
+                if hero.consumables[2].quantity > 0:
+                    PoisonBomb.explode(hero.consumables[2], enemy)
+                    PoisonBomb.poison(hero.consumables[2], enemy)
+                    hero.consumables[2].quantity -= 1
+                    print(f"You have {hero.consumables[2].quantity} {hero.consumables[2].name} remaining")
+                else:
+                    print(f"No {hero.consumables[2].name} in inventory")
             else:
                 print("Wrong command")
         else:
             print("Wrong command")
 
+        enemy.check_poisoned()
         # Printing health bar
         hero.health_bar.draw()
         enemy.health_bar.draw()
