@@ -35,7 +35,7 @@ class Hero(Character):
         self.health_bar = HealthBar(self, color="green")
         self.is_blocking = False
         # Consumables[0] = small_health_potions
-        self.consumables = [HealthPotion(self, name="small_health_potion", consumable_type="restoring", effect="restore 20 health", value=5, power=20, quantity=0)]
+        self.consumables = [HealthPotion(self, name="small_health_potion", consumable_type="restoring", effect="restore 20 health", value=5, power=20, quantity=0), Bomb(self, name="Bomb", consumable_type="damage", effect="deal 20 damage", value=5, power=20, quantity=0)]
 
     def block(self):
         print(f"{self.name} blocked the attack, halving damage taken")

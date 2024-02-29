@@ -20,3 +20,16 @@ class HealthPotion(Consumable):
             self.entity.health += self.power
         print(f"{self.entity.name} used {self.name} to heal {self.power} health")
         self.entity.health_bar.update()
+
+class Bomb(Consumable):
+    def __init__(self, entity, name: str, consumable_type: str, effect: str, value: int = 5, power:int = 20, quantity: int = 0) -> None:
+        super().__init__(entity=entity, name=name, consumable_type=consumable_type, effect=effect, value=value, quantity=quantity)
+
+        self.power = power
+
+    def explode(self, target) -> None:
+        total_damage = self.entity.strength + self.power
+        target.health -= total_damage
+        target.health = max(target.health, 0)
+        target.health_bar.update()
+        print(f"{self.entity.name} dealt {total_damage} damage to {target.name} with {self.name}")
