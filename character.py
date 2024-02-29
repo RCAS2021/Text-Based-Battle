@@ -15,8 +15,8 @@ class Character:
         # Character inventory
         self.weapon = weapon
 
+    # Method to calculate damage taken and health bar update
     def attack(self, target) -> None:
-
         total_damage = self.strength + self.weapon.damage
         if isinstance(target, Hero):
             if target.is_blocking is True:
@@ -24,12 +24,13 @@ class Character:
                 target.is_blocking = False
         target.health -= total_damage
         target.health = max(target.health, 0)
-        target.health_bar.update()
         print(f"{self.name} dealt {total_damage} damage to {target.name} with {self.weapon.name}")
+
 
     def check_poisoned(self) -> None:
         if self.is_poisoned is True:
             self.health -= 3
+            self.health = max(self.health, 0)
             print(f"{self.name} took 3 damage to poison")
 
 class Hero(Character):
