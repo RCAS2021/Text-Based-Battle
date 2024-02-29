@@ -1,10 +1,12 @@
 class Weapon:
     def __init__(self, name: str, weapon_type: str, damage: int, value: int) -> None:
+        # Weapon attributes
         self.name = name
         self.weapon_type = weapon_type
         self.damage = damage
         self.value = value
 
+# Instanciating weapons
 fists = Weapon(name="fists", weapon_type="Melee", damage=3, value=1)
 
 iron_sword = Weapon(name="Iron Sword", weapon_type="Melee", damage=10, value=10)

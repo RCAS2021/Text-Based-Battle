@@ -39,8 +39,11 @@ class HealthBar():
 
     # Draws the health bar
     def draw(self) -> None:
+        # Calls update method
         self.entity.health_bar.update()
+        # Sets quantity of remaining bars to round(entity health / entity max health * bar length) -> when printing, do: symbol * quantity
         remaining_bars = round(self.current_value / self.max_value * self.length)
+        # Sets quantity of lost bars to bar length - remaining bars -> when printing, do: symbol * quantity
         lost_bars = self.length - remaining_bars
         print(f"{self.entity.name}'s HEALTH: {self.entity.health}/{self.entity.max_health}"
               f"\n"
