@@ -1,2 +1,3 @@
+fix consumable quantity <= 0 but instead of continuing, enemy takes poison damage
 implement throwable items
 implement loot
